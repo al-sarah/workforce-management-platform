@@ -1,6 +1,6 @@
 # Workforce Management Platform
 
-![CI](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/al-sarah/workforce-management-platform/actions/workflows/ci.yml/badge.svg)
 
 A full-stack distributed workforce management system built with .NET 10, React, TypeScript, PostgreSQL, MongoDB, RabbitMQ, and Docker.
 
