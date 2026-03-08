@@ -1,0 +1,12 @@
+Next one — backend .dockerignore.
+Place this file at: backend/.dockerignore
+**/bin/
+**/obj/
+**/.vs/
+**/.idea/
+**/TestResults/
+**/*.user
+.env
+.git
+.gitignore
+README.md
