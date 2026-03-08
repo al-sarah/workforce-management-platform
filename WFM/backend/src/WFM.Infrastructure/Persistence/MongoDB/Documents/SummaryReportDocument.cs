@@ -27,6 +27,7 @@ public class SummaryReportDocument
     public List<ProjectProgress> ProjectProgress { get; set; } = new();
 }
 
+[BsonIgnoreExtraElements]
 public class DepartmentHeadcount
 {
     [BsonElement("departmentName")]
@@ -35,6 +36,7 @@ public class DepartmentHeadcount
     public int Count { get; set; }
 }
 
+[BsonIgnoreExtraElements]
 public class ProjectProgress
 {
     [BsonElement("projectName")]
