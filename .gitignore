@@ -1,1 +1,24 @@
-.idea/
+# Environment
+.env
+
+# .NET
+**/bin/
+**/obj/
+**/*.user
+**/.vs/
+**/.idea/
+**/TestResults/
+
+# Node
+node_modules/
+**/node_modules/
+
+# Frontend build
+frontend/dist/
+
+# Docker
+.docker/
+
+# OS
+.DS_Store
+Thumbs.db

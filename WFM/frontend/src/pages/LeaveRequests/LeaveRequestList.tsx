@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   Card,
   Table,
@@ -47,7 +47,7 @@ export default function LeaveRequestList() {
   const [historyModalOpen, setHistoryModalOpen] = useState(false)
   const [historyRequest, setHistoryRequest] = useState<LeaveRequest | null>(null)
 
-  const fetchRequests = async () => {
+  const fetchRequests = useCallback(async () => {
     setLoading(true)
     try {
       const res = await leaveRequestsApi.getAll({
@@ -60,11 +60,11 @@ export default function LeaveRequestList() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [statusFilter, leaveTypeFilter])
 
   useEffect(() => {
     fetchRequests()
-  }, [statusFilter, leaveTypeFilter])
+  }, [fetchRequests])
 
   const handleApprove = async (status: 'Approved' | 'Rejected') => {
     if (!selectedRequest) return

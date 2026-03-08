@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   Card,
   Table,
@@ -40,7 +40,7 @@ export default function AuditLogs() {
   const [entityTypeFilter, setEntityTypeFilter] = useState<string | undefined>()
   const navigate = useNavigate()
 
-  const fetchLogs = async () => {
+  const fetchLogs = useCallback(async () => {
     setLoading(true)
     try {
       const params = entityTypeFilter
@@ -53,11 +53,11 @@ export default function AuditLogs() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [entityTypeFilter])
 
   useEffect(() => {
     fetchLogs()
-  }, [entityTypeFilter])
+  }, [fetchLogs])
 
   const columns: ColumnsType<AuditLog> = [
     {

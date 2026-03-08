@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   Card,
   Row,
@@ -64,7 +64,7 @@ export default function ProjectDetail() {
   const [taskModalOpen, setTaskModalOpen] = useState(false)
   const [form] = Form.useForm()
 
-  const fetchAll = async () => {
+  const fetchAll = useCallback(async () => {
     if (!id) return
     setLoading(true)
     try {
@@ -81,11 +81,11 @@ export default function ProjectDetail() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [id])
 
   useEffect(() => {
     fetchAll()
-  }, [id])
+  }, [fetchAll])
 
   const handleCreateTask = async () => {
     try {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   Card,
   Row,
@@ -57,7 +57,7 @@ export default function EmployeeDetail() {
   const [editModalOpen, setEditModalOpen] = useState(false)
   const [form] = Form.useForm()
 
-  const fetchAll = async () => {
+  const fetchAll = useCallback(async () => {
     if (!id) return
     setLoading(true)
     try {
@@ -74,11 +74,11 @@ export default function EmployeeDetail() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [id])
 
   useEffect(() => {
     fetchAll()
-  }, [id])
+  }, [fetchAll])
 
   const handleEdit = () => {
     if (!employee) return

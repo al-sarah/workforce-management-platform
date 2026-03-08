@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   Table,
   Button,
@@ -40,7 +40,7 @@ export default function EmployeeList() {
   const [search, setSearch] = useState('')
   const [isActive, setIsActive] = useState<boolean | undefined>(undefined)
 
-  const fetchEmployees = async () => {
+  const fetchEmployees = useCallback(async () => {
     setLoading(true)
     try {
       const res = await employeesApi.getAll({
@@ -56,11 +56,11 @@ export default function EmployeeList() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [page, pageSize, search, isActive])
 
   useEffect(() => {
     fetchEmployees()
-  }, [page, search, isActive])
+  }, [fetchEmployees])
 
   const handleDelete = async (id: number) => {
     try {
