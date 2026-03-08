@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace WFM.Infrastructure.Persistence.MongoDB.Documents;
 
+[BsonIgnoreExtraElements]
 public class SummaryReportDocument
 {
     [BsonId]
